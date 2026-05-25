@@ -1,0 +1,331 @@
+aid: firely-server
+name: Firely
+description: >-
+  Firely is an Amsterdam-based health IT company and one of the original
+  co-developers of the HL7 FHIR (Fast Healthcare Interoperability Resources)
+  specification. Co-founded by Ewout Kramer and Martijn Harthoorn (both
+  long-time HL7 FHIR core team members), Firely builds the canonical FHIR
+  toolchain used by payers, providers, health authorities, and digital health
+  vendors worldwide. The Firely platform is anchored by Firely Server (formerly
+  Vonk) — a certified production-grade FHIR server with native support for
+  MongoDB and SQL Server, deployable on Windows, Linux, macOS, Docker, and
+  Kubernetes across on-premise, Azure, AWS, and Google Cloud. Firely Server is
+  G10, ONC, and ISiK certified and supports SMART on FHIR, Bulk Data, CDS
+  Hooks, Subscriptions, Terminology Services, and FHIR Mapping. The product
+  family also includes Simplifier.net (the global FHIR profile registry and
+  package server hosting ~9,000 projects, 40,000+ profiles, and 1,600+
+  implementation guides), Forge (FHIR profile editor), Firely Terminal
+  (command-line FHIR tool with FQL/FSH/FHIRPath support), the open-source
+  Firely .NET SDK (the de-facto reference C# FHIR library), the firely-cql-sdk
+  for Clinical Quality Language, the Firely Validator API, FHIR Facade, Firely
+  Server Ingest, and Firely Auth. Customers include UCSF, Humana, Roche, NHS,
+  Opala, and the World Health Organization. Firely does not operate a hosted
+  multi-tenant FHIR-as-a-service offering with a public REST endpoint;
+  customers run Firely Server in their own environments. The public developer
+  surface is therefore the Firely software products (Firely Server, .NET SDK,
+  Terminal), the Simplifier.net package and registry APIs, and the open HL7
+  FHIR REST API contract that every Firely Server instance implements.
+tags:
+  - FHIR
+  - HL7
+  - Healthcare
+  - Health IT
+  - Interoperability
+  - Clinical Data
+  - FHIR Server
+  - Vonk
+  - Simplifier
+  - Forge
+  - Terminology
+  - SMART on FHIR
+  - Bulk Data
+  - CDS Hooks
+  - Implementation Guides
+  - .NET SDK
+  - CQL
+  - Profile Registry
+kind: contract
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/firely-server/refs/heads/main/apis.yml
+created: '2026-05-25'
+modified: '2026-05-25'
+specificationVersion: '0.20'
+apis:
+  - aid: firely-server:simplifier-package-api
+    name: Simplifier.net FHIR Package API
+    description: >-
+      The Simplifier.net FHIR Package API serves every publicly published FHIR
+      package — including packages from Simplifier.net, HL7 International, and
+      other public feeds — and is the package backbone of the FHIR Registry at
+      registry.fhir.org. Endpoints follow an NPM-compatible layout
+      (`/{package-name}/-/{package-name}-{version}.tgz`) plus FHIR-specific
+      catalog search by canonical URL, FHIR version, and package metadata.
+      Public packages require no authentication; private feeds use JWT tokens
+      from api.simplifier.net/token.
+    humanURL: https://docs.fire.ly/projects/Simplifier/features/api.html
+    baseURL: https://packages.simplifier.net/
+    tags:
+      - FHIR
+      - Packages
+      - Registry
+      - Implementation Guides
+      - Profiles
+      - NPM
+    properties:
+      - type: Documentation
+        url: https://docs.fire.ly/projects/Simplifier/features/api.html
+      - type: Documentation
+        url: https://app.swaggerhub.com/apis/firely/Simplifier.net_FHIR_Package_API/1.0.1
+        name: SwaggerHub API documentation
+      - type: OpenAPI
+        url: openapi/simplifier-package-api-openapi.yml
+      - type: Registry
+        url: https://registry.fhir.org/
+        name: FHIR Registry (human-facing search)
+  - aid: firely-server:firely-server-fhir-rest-api
+    name: Firely Server FHIR REST API
+    description: >-
+      Every Firely Server (formerly Vonk) instance exposes the standard HL7
+      FHIR REST API contract — type-level and instance-level CRUD, search,
+      history, batch/transaction, capability statement (/metadata),
+      conditional operations, and conformance-driven validation — plus
+      pluggable modules for Terminology Services, Bulk Data Access ($export),
+      SMART on FHIR, CDS Hooks, Subscriptions/PubSub, FHIR Mapping Language,
+      and custom search parameters. Firely Server supports FHIR R4, R4B, R5,
+      and STU3 across MongoDB and SQL Server backends and is G10, ONC, and
+      ISiK certified. The API contract is the HL7 FHIR specification itself;
+      there is no public hosted multi-tenant base URL — customers self-host
+      Firely Server on Windows, Linux, macOS, Docker, or Kubernetes.
+    humanURL: https://docs.fire.ly/projects/Firely-Server/
+    tags:
+      - FHIR
+      - REST
+      - Healthcare
+      - CRUD
+      - Search
+      - Terminology
+      - Bulk Data
+      - SMART on FHIR
+      - CDS Hooks
+      - Subscriptions
+    properties:
+      - type: Documentation
+        url: https://docs.fire.ly/projects/Firely-Server/
+        name: Firely Server Documentation
+      - type: Standards
+        url: https://hl7.org/fhir/http.html
+        name: HL7 FHIR RESTful API specification
+      - type: Standards
+        url: https://hl7.org/fhir/
+        name: HL7 FHIR Specification
+      - type: Documentation
+        url: https://hl7.org/fhir/uv/bulkdata/
+        name: FHIR Bulk Data Access IG
+      - type: Documentation
+        url: https://hl7.org/fhir/smart-app-launch/
+        name: SMART App Launch
+      - type: Sample
+        url: https://github.com/FirelyTeam/firely-pubsub-sample
+        name: Firely Server PubSub sample
+      - type: Sample
+        url: https://github.com/FirelyTeam/Vonk.Facade.Starter
+        name: Vonk Facade starter project
+      - type: Plugin
+        url: https://github.com/FirelyTeam/Vonk.Plugin.DocumentOperation
+        name: Vonk $document operation plugin
+      - type: Plugin
+        url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
+        name: Vonk plugin template
+common:
+  - type: Website
+    url: https://fire.ly
+  - type: Portal
+    url: https://docs.fire.ly
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Firely-Server/
+    name: Firely Server Documentation
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Firely-NET-SDK/
+    name: Firely .NET SDK Documentation
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Simplifier/
+    name: Simplifier Documentation
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Forge/
+    name: Forge Documentation
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Firely-Terminal/
+    name: Firely Terminal Documentation
+  - type: Product
+    url: https://fire.ly/firely-server/
+    name: Firely Server (Vonk)
+  - type: Product
+    url: https://fire.ly/products/firely-net-sdk/
+    name: Firely .NET SDK
+  - type: Product
+    url: https://fire.ly/products/simplifier-net/
+    name: Simplifier.net
+  - type: Product
+    url: https://fire.ly/forge/
+    name: Forge
+  - type: Product
+    url: https://fire.ly/products/firely-terminal/
+    name: Firely Terminal
+  - type: Product
+    url: https://fire.ly/products/firely-auth/
+    name: Firely Auth
+  - type: Product
+    url: https://fire.ly/products/fhir-facade/
+    name: FHIR Facade
+  - type: Product
+    url: https://fire.ly/products/firely-server-ingest/
+    name: Firely Server Ingest
+  - type: GitHubOrganization
+    url: https://github.com/FirelyTeam
+  - type: SDK
+    url: https://github.com/FirelyTeam/firely-net-sdk
+    name: Firely .NET SDK (C#)
+  - type: SDK
+    url: https://github.com/FirelyTeam/firely-cql-sdk
+    name: Firely CQL SDK
+  - type: Tool
+    url: https://github.com/FirelyTeam/spark
+    name: Spark FHIR Server (open source)
+  - type: Tool
+    url: https://github.com/FirelyTeam/firely-validator-api
+    name: Firely Validator API
+  - type: Tool
+    url: https://github.com/FirelyTeam/Firely.Fhir.Packages
+    name: Firely FHIR Packages library
+  - type: Tool
+    url: https://github.com/FirelyTeam/Fhir.Metrics
+    name: Fhir.Metrics (UCUM)
+  - type: Tool
+    url: https://github.com/FirelyTeam/firely-terminal-pipeline
+    name: Firely Terminal GitHub Action
+  - type: HelmChart
+    url: https://github.com/FirelyTeam/Helm.Charts
+    name: Firely Helm Charts
+  - type: HelmChart
+    url: https://github.com/FirelyTeam/Vonk.Helm.Charts
+    name: Vonk Helm Charts
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/firely-pubsub-sample
+    name: Firely Server PubSub sample
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/fhirstarters
+    name: FHIR Starters example projects
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/Vonk.Facade.Starter
+    name: Vonk Facade Starter
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/Vonk.Facade.Relational
+    name: Vonk Facade Relational base
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/Firely.Fhir.ValidationDemo
+    name: Firely FHIR Validation Demo
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/ACME-FSH-IG-Example
+    name: ACME FSH IG Example
+  - type: CodeExamples
+    url: https://github.com/FirelyTeam/ACME-FSH-Example
+    name: ACME FSH Example
+  - type: Plugin
+    url: https://github.com/FirelyTeam/Vonk.Plugin.DocumentOperation
+    name: Vonk $document operation plugin
+  - type: Plugin
+    url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
+    name: Vonk plugin template
+  - type: SDK
+    url: https://github.com/FirelyTeam/RonFHIR
+    name: R on FHIR
+  - type: Tool
+    url: https://github.com/FirelyTeam/Wind.Tunnel
+    name: Wind.Tunnel FHIR server performance testing
+  - type: Tool
+    url: https://github.com/FirelyTeam/firely-browser-extension
+    name: Firely Browser Extension
+  - type: Tool
+    url: https://github.com/FirelyTeam/fhir-codegen
+    name: FHIR code generation tools
+  - type: Tool
+    url: https://github.com/FirelyTeam/Hl7.Fhir.Validation.Legacy
+    name: HL7 FHIR Validation (Legacy)
+  - type: Template
+    url: https://github.com/FirelyTeam/fhir-specification-template-repository
+    name: FHIR Specification Template Repository
+  - type: Documentation
+    url: https://github.com/FirelyTeam/firely-docs
+    name: Firely Documentation Source
+  - type: Skills
+    url: https://github.com/FirelyTeam/skills
+    name: Firely Agent Skills
+  - type: Registry
+    url: https://simplifier.net
+    name: Simplifier.net FHIR Registry
+  - type: Standards
+    url: https://hl7.org/fhir/
+    name: HL7 FHIR Specification (co-developed)
+  - type: Pricing
+    url: https://fire.ly/firely-server/
+    name: Firely Server pricing (contact sales)
+  - type: SignUp
+    url: https://simplifier.net/login
+    name: Simplifier.net Sign Up
+  - type: Training
+    url: https://fire.ly/training/
+  - type: Consulting
+    url: https://fire.ly/services/
+  - type: Blog
+    url: https://fire.ly/blog/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/firely/
+  - type: Twitter
+    url: https://twitter.com/FirelyTeam
+  - type: YouTube
+    url: https://www.youtube.com/c/Firely
+  - type: Contact
+    url: https://fire.ly/contact/
+  - type: Customers
+    url: https://fire.ly/customers/
+  - type: Features
+    data:
+      - Firely Server (Vonk) — certified production FHIR server supporting FHIR R4, R4B, R5, and STU3
+      - G10, ONC Health IT, and ISiK (German interoperability) certifications
+      - MongoDB and SQL Server storage backends with flexible schemas
+      - Deployment on Windows, Linux, macOS, Docker, and Kubernetes via official Helm Charts
+      - Cloud-portable across Azure, AWS, Google Cloud, on-premise, and hybrid
+      - Native FHIR validation against profiles, extensions, and value sets
+      - SMART on FHIR authentication and authorization (latest version)
+      - Bulk Data Access ($export) for population-scale data exchange
+      - Terminology Service module ($validate-code, $expand, $lookup, $translate)
+      - FHIR Mapping Language engine and CDS Hooks support
+      - Subscriptions and PubSub for event-driven workflows
+      - Custom search parameters, conformance resources, and request/response interception
+      - Encryption at rest and in transit; event logging enabled by default
+      - Firely .NET SDK — official open-source C# FHIR library (de-facto reference SDK)
+      - Firely CQL SDK — Clinical Quality Language execution engine for .NET
+      - Firely Terminal — CLI for FHIR validation, FQL, FSH compilation, FHIRPath, package management
+      - Simplifier.net — global FHIR registry hosting 9,000+ projects and 40,000+ profiles
+      - Forge — desktop FHIR profile editor integrated with Simplifier
+      - Firely Validator API — standalone FHIR resource validation service
+      - FHIR Facade — adapter for exposing non-FHIR backends through a FHIR API
+      - Firely Server Ingest — high-volume FHIR data ingestion pipeline
+      - Firely Auth — SMART-on-FHIR-compatible authentication component
+      - Co-developers of HL7 FHIR (founders Ewout Kramer and Martijn Harthoorn on FHIR core team)
+      - Customers include UCSF, Humana, Roche, NHS, WHO, and Opala
+      - FHIR consulting, training (profiling, SDK, quality measures), and implementation services
+    sources:
+      - https://fire.ly
+      - https://fire.ly/firely-server/
+      - https://docs.fire.ly
+      - https://github.com/FirelyTeam
+      - https://simplifier.net
+    updated: '2026-05-25'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
