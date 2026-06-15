@@ -1,0 +1,477 @@
+{
+  "item": [
+    {
+      "id": "db03e4eb-73dc-408a-a0ba-bf7da5260a06",
+      "name": "Search FHIR packages",
+      "request": {
+        "name": "Search FHIR packages",
+        "description": {
+          "content": "Search for FHIR packages by name, canonical and other attributes.\n* Can be used for populating intellisense dropdowns for package search.\n* Does not intend to follow NPM in all aspects and adds extra FHIR specific searches, like canonicals and FHIR versions.\n\nKnown limitations:\n* Packages from which all versions are marked as `unlisted` are not returned.\n* The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "catalog"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "name",
+              "value": "<string>",
+              "description": "Search by (part of) a package name"
+            },
+            {
+              "disabled": false,
+              "key": "version",
+              "value": "<string>",
+              "description": "Search for packages with a version containing this term"
+            },
+            {
+              "disabled": false,
+              "key": "canonical",
+              "value": "<string>",
+              "description": "Search for packages or resource contained in it with this term in their canonical"
+            },
+            {
+              "disabled": false,
+              "key": "pkgcanonical",
+              "value": "<string>",
+              "description": "Search for packages with this exact canonical"
+            },
+            {
+              "disabled": false,
+              "key": "fhirVersion",
+              "value": "<string>",
+              "description": "Limit search by FHIR version"
+            },
+            {
+              "disabled": false,
+              "key": "prerelease",
+              "value": "false",
+              "description": "Whether to include or exclude prerelease package versions"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7f3ea9b3-dc18-4857-a1e7-e62656d7531e",
+          "name": "A list of package objects",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "hl7.fhir.us.core"
+                },
+                {
+                  "key": "version",
+                  "value": "<string>"
+                },
+                {
+                  "key": "canonical",
+                  "value": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+                },
+                {
+                  "key": "pkgcanonical",
+                  "value": "http://hl7.org/fhir/us/core"
+                },
+                {
+                  "key": "fhirVersion",
+                  "value": "<string>"
+                },
+                {
+                  "key": "prerelease",
+                  "value": "false"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"name\": \"hl7.fhir.us.core\",\n    \"description\": \"The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.\",\n    \"fhirVersion\": \"R4\"\n  },\n  {\n    \"name\": \"hl7.fhir.us.core\",\n    \"description\": \"The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.\",\n    \"fhirVersion\": \"R4\"\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b14e8da4-eceb-4f50-8e79-d8d948b7f3b7",
+          "name": "No packages found for the package name",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "hl7.fhir.us.core"
+                },
+                {
+                  "key": "version",
+                  "value": "<string>"
+                },
+                {
+                  "key": "canonical",
+                  "value": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+                },
+                {
+                  "key": "pkgcanonical",
+                  "value": "http://hl7.org/fhir/us/core"
+                },
+                {
+                  "key": "fhirVersion",
+                  "value": "<string>"
+                },
+                {
+                  "key": "prerelease",
+                  "value": "false"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "429b5000-66b7-4ff4-9211-952ccdfd22ee",
+      "name": "List package versions.",
+      "request": {
+        "name": "List package versions.",
+        "description": {
+          "content": "Endpoint to retrieve all versions for a package name.\n* The payload is compliant with the NPM package version listing.\n* The `dist-tags` element will provide tags on certain versions, like the label of which version is the `latest`.\n* In calculating `latest` the highest stable semver version is used, not the most recently published version.\n* If an author has indicated that the package should no longer be used, the element `unlisted` will be populated for a version.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":package-name"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "package-name",
+              "description": "(Required) Name of the package"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "55b4501f-9d77-4be7-ae2f-0ccb220b7629",
+          "name": "A package object with all available versions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":package-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-name",
+                  "description": "(Required) Name of the package"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"_id\": \"hl7.fhir.us.core\",\n  \"name\": \"hl7.fhir.us.core\",\n  \"dist-tags\": {\n    \"latest\": \"1.0.0\"\n  },\n  \"versions\": {\n    \"key_0\": {\n      \"name\": \"hl7.fhir.us.core\",\n      \"description\": \"The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.\",\n      \"fhirVersion\": \"R4\",\n      \"version\": \"1.0.0\",\n      \"dist\": {\n        \"shasum\": \"8dd6ac852c1d2cb4ac7312188d8d6ef7ccb65da6\",\n        \"tarball\": \"https://packages.simplifier.net/hl7.fhir.us.core/1.0.0\"\n      },\n      \"url\": \"https://packages.simplifier.net/hl7.fhir.us.core/1.0.0\"\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "4614ffde-b193-4903-ae91-d903a1782f40",
+          "name": "No packages found for the package name",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":package-name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-name",
+                  "description": "(Required) Name of the package"
+                }
+              ]
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5da82385-7ca2-429c-b222-c44176d4dc14",
+      "name": "Download package version",
+      "request": {
+        "name": "Download package version",
+        "description": {
+          "content": "Download a specific package version.\n",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            ":package-name",
+            ":package-version"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "package-name",
+              "description": "(Required) Name of the package"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "package-version",
+              "description": "(Required) Version of the package"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/tar+gzip"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "efb46876-8a48-4c23-9736-acca943fe841",
+          "name": "A package object with all available versions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":package-name",
+                ":package-version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-name",
+                  "description": "(Required) Name of the package"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-version",
+                  "description": "(Required) Version of the package"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/tar+gzip"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/tar+gzip"
+            }
+          ],
+          "body": "string",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "dbd74b00-c4ce-40de-a11c-3bb7263467c4",
+          "name": "No packages found for the package name or version",
+          "originalRequest": {
+            "url": {
+              "path": [
+                ":package-name",
+                ":package-version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-name",
+                  "description": "(Required) Name of the package"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "package-version",
+                  "description": "(Required) Version of the package"
+                }
+              ]
+            },
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://packages.simplifier.net/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8eafb6d5-3da1-4414-8aac-aaf7b227e351",
+    "name": "Simplifier.net FHIR Package API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to find and retrieve all publicly published FHIR packages.\n* Serves all FHIR packages from Simplifier.net, HL7 International and other public feeds\n* For humans there is the [FHIR Registry at registry.fhir.org](https://registry.fhir.org/) for searching the full package library.\n\nFind the documentation for [other Simplifier.net APIs](https://docs.fire.ly/projects/Simplifier/api.html).\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Simplifier.net FHIR Package API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search FHIR packages",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://packages.simplifier.net/catalog",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "query",
+            "description": "Search by (part of) a package name"
+          },
+          {
+            "name": "version",
+            "value": "",
+            "type": "query",
+            "description": "Search for packages with a version containing this term"
+          },
+          {
+            "name": "canonical",
+            "value": "",
+            "type": "query",
+            "description": "Search for packages or resource contained in it with this term in their canonical"
+          },
+          {
+            "name": "pkgcanonical",
+            "value": "http://hl7.org/fhir/us/core",
+            "type": "query",
+            "description": "Search for packages with this exact canonical"
+          },
+          {
+            "name": "fhirVersion",
+            "value": "",
+            "type": "query",
+            "description": "Limit search by FHIR version"
+          },
+          {
+            "name": "prerelease",
+            "value": "",
+            "type": "query",
+            "description": "Whether to include or exclude prerelease package versions"
+          }
+        ]
+      },
+      "docs": "Search for FHIR packages by name, canonical and other attributes.\n* Can be used for populating intellisense dropdowns for package search.\n* Does not intend to follow NPM in all aspects and adds extra FHIR specific searches, like canonicals and FHIR versions.\n\nKnown limitations:\n* Packages from which all versions are marked as `unlisted` are not returned.\n* The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.\n"
+    },
+    {
+      "info": {
+        "name": "List package versions.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://packages.simplifier.net/:package-name",
+        "params": [
+          {
+            "name": "package-name",
+            "value": "hl7.fhir.us.core",
+            "type": "path",
+            "description": "Name of the package"
+          }
+        ]
+      },
+      "docs": "Endpoint to retrieve all versions for a package name.\n* The payload is compliant with the NPM package version listing.\n* The `dist-tags` element will provide tags on certain versions, like the label of which version is the `latest`.\n* In calculating `latest` the highest stable semver version is used, not the most recently published version.\n* If an author has indicated that the package should no longer be used, the element `unlisted` will be populated for a version.\n"
+    },
+    {
+      "info": {
+        "name": "Download package version",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://packages.simplifier.net/:package-name/:package-version",
+        "params": [
+          {
+            "name": "package-name",
+            "value": "hl7.fhir.us.core",
+            "type": "path",
+            "description": "Name of the package"
+          },
+          {
+            "name": "package-version",
+            "value": "3.1.1",
+            "type": "path",
+            "description": "Version of the package"
+          }
+        ]
+      },
+      "docs": "Download a specific package version.\n"
+    }
+  ],
+  "bundled": true
+}
