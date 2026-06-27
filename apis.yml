@@ -184,25 +184,25 @@ common:
     name: Firely Server Ingest
   - type: GitHubOrganization
     url: https://github.com/FirelyTeam
-  - type: SDK
+  - type: SDKs
     url: https://github.com/FirelyTeam/firely-net-sdk
     name: Firely .NET SDK (C#)
-  - type: SDK
+  - type: SDKs
     url: https://github.com/FirelyTeam/firely-cql-sdk
     name: Firely CQL SDK
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/spark
     name: Spark FHIR Server (open source)
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/firely-validator-api
     name: Firely Validator API
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/Firely.Fhir.Packages
     name: Firely FHIR Packages library
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/Fhir.Metrics
     name: Fhir.Metrics (UCUM)
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/firely-terminal-pipeline
     name: Firely Terminal GitHub Action
   - type: HelmChart
@@ -238,19 +238,19 @@ common:
   - type: Plugin
     url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
     name: Vonk plugin template
-  - type: SDK
+  - type: SDKs
     url: https://github.com/FirelyTeam/RonFHIR
     name: R on FHIR
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/Wind.Tunnel
     name: Wind.Tunnel FHIR server performance testing
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/firely-browser-extension
     name: Firely Browser Extension
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/fhir-codegen
     name: FHIR code generation tools
-  - type: Tool
+  - type: Tools
     url: https://github.com/FirelyTeam/Hl7.Fhir.Validation.Legacy
     name: HL7 FHIR Validation (Legacy)
   - type: Template
@@ -271,7 +271,7 @@ common:
   - type: Pricing
     url: https://fire.ly/firely-server/
     name: Firely Server pricing (contact sales)
-  - type: SignUp
+  - type: Signup
     url: https://simplifier.net/login
     name: Simplifier.net Sign Up
   - type: Training
