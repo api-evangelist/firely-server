@@ -139,6 +139,8 @@ apis:
         url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
         name: Vonk plugin template
 common:
+  - type: DomainSecurity
+    url: security/firely-server-domain-security.yml
   - type: Website
     url: https://fire.ly
   - type: Portal
