@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  version: 1.0.1
+  title: Simplifier.net FHIR Package Catalog API
+  description: 'API to find and retrieve all publicly published FHIR packages.
+
+    * Serves all FHIR packages from Simplifier.net, HL7 International and other public feeds
+
+    * For humans there is the [FHIR Registry at registry.fhir.org](https://registry.fhir.org/) for searching the full package library.
+
+
+    Find the documentation for [other Simplifier.net APIs](https://docs.fire.ly/projects/Simplifier/api.html).
+
+    '
+servers:
+- url: https://packages.simplifier.net/
+- url: https://packages.fhir.org/
+- url: https://packages2.fhir.org/packages/
+- url: https://npm.fhir.org/packages/
+tags:
+- name: Catalog
+paths:
+  /catalog:
+    get:
+      summary: Search FHIR packages
+      description: 'Search for FHIR packages by name, canonical and other attributes.
+
+        * Can be used for populating intellisense dropdowns for package search.
+
+        * Does not intend to follow NPM in all aspects and adds extra FHIR specific searches, like canonicals and FHIR versions.
+
+
+        Known limitations:
+
+        * Packages from which all versions are marked as `unlisted` are not returned.
+
+        * The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.
+
+        '
+      parameters:
+      - name: name
+        description: Search by (part of) a package name
+        in: query
+        schema:
+          type: string
+        examples:
+          hl7.fhir.us.core:
+            value: hl7.fhir.us.core
+            summary: Full package name
+          hl7.fhir:
+            value: hl7.fhir
+            summary: Partial package name
+      - name: version
+        description: Search for packages with a version containing this term
+        in: query
+        schema:
+          type: string
+        examples:
+          4.1.0:
+            value: 4.1.0
+            summary: Full semver package version
+          4.0:
+            value: 4.0
+            summary: Partial semver package version
+      - name: canonical
+        description: Search for packages or resource contained in it with this term in their canonical
+        in: query
+        schema:
+          type: string
+        examples:
+          full-canonical:
+            value: http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+            summary: Full canonical
+          partial-canonical:
+            value: http://hl7.org/fhir/
+            summary: Partial canonical
+      - name: pkgcanonical
+        description: Search for packages with this exact canonical
+        in: query
+        schema:
+          type: string
+        example: http://hl7.org/fhir/us/core
+      - name: fhirVersion
+        description: Limit search by FHIR version
+        in: query
+        schema:
+          type: string
+          enum:
+          - R2
+          - R3
+          - R4
+          - R4B
+          - R5
+      - name: prerelease
+        description: Whether to include or exclude prerelease package versions
+        in: query
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: A list of package objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageList'
+        '404':
+          description: No packages found for the package name
+      tags:
+      - Catalog
+components:
+  schemas:
+    PackageList:
+      description: A list of Package objects
+      type: array
+      items:
+        $ref: '#/components/schemas/Package'
+    Package:
+      description: An object describing a package
+      properties:
+        name:
+          type: string
+          description: Package name
+          example: hl7.fhir.us.core
+        description:
+          type: string
+          description: Package description
+          example: The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.
+        fhirVersion:
+          type: string
+          description: Package FHIR version
+          example: R4
