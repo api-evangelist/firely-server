@@ -45,99 +45,110 @@ tags:
   - CQL
   - Profile Registry
 kind: contract
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 position: Provider
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/firely-server.png
 url: https://raw.githubusercontent.com/api-evangelist/firely-server/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-25'
 specificationVersion: '0.20'
 apis:
-  - aid: firely-server:simplifier-package-api
-    name: Simplifier.net FHIR Package API
-    description: >-
-      The Simplifier.net FHIR Package API serves every publicly published FHIR
-      package — including packages from Simplifier.net, HL7 International, and
-      other public feeds — and is the package backbone of the FHIR Registry at
-      registry.fhir.org. Endpoints follow an NPM-compatible layout
-      (`/{package-name}/-/{package-name}-{version}.tgz`) plus FHIR-specific
-      catalog search by canonical URL, FHIR version, and package metadata.
-      Public packages require no authentication; private feeds use JWT tokens
-      from api.simplifier.net/token.
-    humanURL: https://docs.fire.ly/projects/Simplifier/features/api.html
-    baseURL: https://packages.simplifier.net/
-    tags:
-      - FHIR
-      - Packages
-      - Registry
-      - Implementation Guides
-      - Profiles
-      - NPM
-    properties:
-      - type: Documentation
-        url: https://docs.fire.ly/projects/Simplifier/features/api.html
-      - type: Documentation
-        url: https://app.swaggerhub.com/apis/firely/Simplifier.net_FHIR_Package_API/1.0.1
-        name: SwaggerHub API documentation
-      - type: OpenAPI
-        url: openapi/simplifier-package-api-openapi.yml
-      - type: Registry
-        url: https://registry.fhir.org/
-        name: FHIR Registry (human-facing search)
-  - aid: firely-server:firely-server-fhir-rest-api
-    name: Firely Server FHIR REST API
-    description: >-
-      Every Firely Server (formerly Vonk) instance exposes the standard HL7
-      FHIR REST API contract — type-level and instance-level CRUD, search,
-      history, batch/transaction, capability statement (/metadata),
-      conditional operations, and conformance-driven validation — plus
-      pluggable modules for Terminology Services, Bulk Data Access ($export),
-      SMART on FHIR, CDS Hooks, Subscriptions/PubSub, FHIR Mapping Language,
-      and custom search parameters. Firely Server supports FHIR R4, R4B, R5,
-      and STU3 across MongoDB and SQL Server backends and is G10, ONC, and
-      ISiK certified. The API contract is the HL7 FHIR specification itself;
-      there is no public hosted multi-tenant base URL — customers self-host
-      Firely Server on Windows, Linux, macOS, Docker, or Kubernetes.
-    humanURL: https://docs.fire.ly/projects/Firely-Server/
-    tags:
-      - FHIR
-      - REST
-      - Healthcare
-      - CRUD
-      - Search
-      - Terminology
-      - Bulk Data
-      - SMART on FHIR
-      - CDS Hooks
-      - Subscriptions
-    properties:
-      - type: Documentation
-        url: https://docs.fire.ly/projects/Firely-Server/
-        name: Firely Server Documentation
-      - type: Standards
-        url: https://hl7.org/fhir/http.html
-        name: HL7 FHIR RESTful API specification
-      - type: Standards
-        url: https://hl7.org/fhir/
-        name: HL7 FHIR Specification
-      - type: Documentation
-        url: https://hl7.org/fhir/uv/bulkdata/
-        name: FHIR Bulk Data Access IG
-      - type: Documentation
-        url: https://hl7.org/fhir/smart-app-launch/
-        name: SMART App Launch
-      - type: Sample
-        url: https://github.com/FirelyTeam/firely-pubsub-sample
-        name: Firely Server PubSub sample
-      - type: Sample
-        url: https://github.com/FirelyTeam/Vonk.Facade.Starter
-        name: Vonk Facade starter project
-      - type: Plugin
-        url: https://github.com/FirelyTeam/Vonk.Plugin.DocumentOperation
-        name: Vonk $document operation plugin
-      - type: Plugin
-        url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
-        name: Vonk plugin template
+- aid: firely-server:firely-server-fhir-rest-api
+  name: Firely Server FHIR REST API
+  description: >-
+    Every Firely Server (formerly Vonk) instance exposes the standard HL7 FHIR REST API contract — type-level
+    and instance-level CRUD, search, history, batch/transaction, capability statement (/metadata), conditional
+    operations, and conformance-driven validation — plus pluggable modules for Terminology Services, Bulk
+    Data Access ($export), SMART on FHIR, CDS Hooks, Subscriptions/PubSub, FHIR Mapping Language, and
+    custom search parameters. Firely Server supports FHIR R4, R4B, R5, and STU3 across MongoDB and SQL
+    Server backends and is G10, ONC, and ISiK certified. The API contract is the HL7 FHIR specification
+    itself; there is no public hosted multi-tenant base URL — customers self-host Firely Server on Windows,
+    Linux, macOS, Docker, or Kubernetes.
+  humanURL: https://docs.fire.ly/projects/Firely-Server/
+  tags:
+  - FHIR
+  - REST
+  - Healthcare
+  - CRUD
+  - Search
+  - Terminology
+  - Bulk Data
+  - SMART on FHIR
+  - CDS Hooks
+  - Subscriptions
+  properties:
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Firely-Server/
+    name: Firely Server Documentation
+  - type: Standards
+    url: https://hl7.org/fhir/http.html
+    name: HL7 FHIR RESTful API specification
+  - type: Standards
+    url: https://hl7.org/fhir/
+    name: HL7 FHIR Specification
+  - type: Documentation
+    url: https://hl7.org/fhir/uv/bulkdata/
+    name: FHIR Bulk Data Access IG
+  - type: Documentation
+    url: https://hl7.org/fhir/smart-app-launch/
+    name: SMART App Launch
+  - type: Sample
+    url: https://github.com/FirelyTeam/firely-pubsub-sample
+    name: Firely Server PubSub sample
+  - type: Sample
+    url: https://github.com/FirelyTeam/Vonk.Facade.Starter
+    name: Vonk Facade starter project
+  - type: Plugin
+    url: https://github.com/FirelyTeam/Vonk.Plugin.DocumentOperation
+    name: Vonk $document operation plugin
+  - type: Plugin
+    url: https://github.com/FirelyTeam/Vonk.Plugin.ExampleOperation
+    name: Vonk plugin template
+- aid: firely-server:firely-server-catalog-api
+  name: Firely Catalog API
+  description: The Catalog API from Firely — 1 operation(s) for catalog.
+  humanURL: https://docs.fire.ly/projects/Simplifier/features/api.html
+  baseURL: https://packages.simplifier.net/
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/firely-server-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Simplifier/features/api.html
+  - type: Documentation
+    url: https://app.swaggerhub.com/apis/firely/Simplifier.net_FHIR_Package_API/1.0.1
+  - type: Registry
+    url: https://registry.fhir.org/
+- aid: firely-server:firely-server-simplifier-net-fhir-package-api-api
+  name: Firely Simplifier.net FHIR Package API API
+  description: >-
+    The Simplifier.net FHIR Package API API from Firely — 2 operation(s) for simplifier.net fhir package
+    api.
+  humanURL: https://docs.fire.ly/projects/Simplifier/features/api.html
+  baseURL: https://packages.simplifier.net/
+  tags:
+  - Simplifier.net FHIR Package API
+  properties:
+  - type: OpenAPI
+    url: openapi/firely-server-simplifier-net-fhir-package-api-api-openapi.yml
+  - type: Documentation
+    url: https://docs.fire.ly/projects/Simplifier/features/api.html
+  - type: Documentation
+    url: https://app.swaggerhub.com/apis/firely/Simplifier.net_FHIR_Package_API/1.0.1
+  - type: Registry
+    url: https://registry.fhir.org/
 common:
   - type: AgenticAccess
     url: agentic-access/firely-server-agentic-access.yml
