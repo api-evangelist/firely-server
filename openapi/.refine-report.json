@@ -1,0 +1,16 @@
+{
+  "provider": "firely-server",
+  "sources": [
+    "firely-server-catalog-api-openapi.yml",
+    "firely-server-simplifier-net-fhir-package-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "firely-server-catalog-api-openapi.yml",
+    "firely-server-simplifier-net-fhir-package-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
