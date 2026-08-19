@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Simplifier.net FHIR Package Catalog Simplifier.net FHIR Package API API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Simplifier.net FHIR Package API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List package versions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://packages.simplifier.net/:package-name",
+            "params": [
+              {
+                "name": "package-name",
+                "value": "hl7.fhir.us.core",
+                "type": "path",
+                "description": "Name of the package"
+              }
+            ]
+          },
+          "docs": "Endpoint to retrieve all versions for a package name.\n* The payload is compliant with the NPM package version listing.\n* The `dist-tags` element will provide tags on certain versions, like the label of which version is the `latest`.\n* In calculating `latest` the highest stable semver version is used, not the most recently published version.\n* If an author has indicated that the package should no longer be used, the element `unlisted` will be populated for a version.\n"
+        },
+        {
+          "info": {
+            "name": "Download package version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://packages.simplifier.net/:package-name/:package-version",
+            "params": [
+              {
+                "name": "package-name",
+                "value": "hl7.fhir.us.core",
+                "type": "path",
+                "description": "Name of the package"
+              },
+              {
+                "name": "package-version",
+                "value": "3.1.1",
+                "type": "path",
+                "description": "Version of the package"
+              }
+            ]
+          },
+          "docs": "Download a specific package version.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

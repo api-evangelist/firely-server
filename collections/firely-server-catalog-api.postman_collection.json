@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "d2d2ad0c-635c-4a2e-84a1-5a0e22bd8497",
+      "name": "Catalog",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b618a4b1-587d-4ab7-8366-f5bcf0b4bf03",
+          "name": "Search FHIR packages",
+          "request": {
+            "name": "Search FHIR packages",
+            "description": {
+              "content": "Search for FHIR packages by name, canonical and other attributes.\n* Can be used for populating intellisense dropdowns for package search.\n* Does not intend to follow NPM in all aspects and adds extra FHIR specific searches, like canonicals and FHIR versions.\n\nKnown limitations:\n* Packages from which all versions are marked as `unlisted` are not returned.\n* The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalog"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Search by (part of) a package name"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Search for packages with a version containing this term"
+                },
+                {
+                  "disabled": false,
+                  "key": "canonical",
+                  "value": "<string>",
+                  "description": "Search for packages or resource contained in it with this term in their canonical"
+                },
+                {
+                  "disabled": false,
+                  "key": "pkgcanonical",
+                  "value": "<string>",
+                  "description": "Search for packages with this exact canonical"
+                },
+                {
+                  "disabled": false,
+                  "key": "fhirVersion",
+                  "value": "<string>",
+                  "description": "Limit search by FHIR version"
+                },
+                {
+                  "disabled": false,
+                  "key": "prerelease",
+                  "value": "false",
+                  "description": "Whether to include or exclude prerelease package versions"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "414b5997-a340-486f-957e-933f8055c730",
+              "name": "A list of package objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "hl7.fhir.us.core"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "canonical",
+                      "value": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+                    },
+                    {
+                      "key": "pkgcanonical",
+                      "value": "http://hl7.org/fhir/us/core"
+                    },
+                    {
+                      "key": "fhirVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"hl7.fhir.us.core\",\n    \"description\": \"The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.\",\n    \"fhirVersion\": \"R4\"\n  },\n  {\n    \"name\": \"hl7.fhir.us.core\",\n    \"description\": \"The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.\",\n    \"fhirVersion\": \"R4\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65a348d5-fde4-44d8-baec-9bfa1468ce44",
+              "name": "No packages found for the package name",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalog"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "hl7.fhir.us.core"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "canonical",
+                      "value": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+                    },
+                    {
+                      "key": "pkgcanonical",
+                      "value": "http://hl7.org/fhir/us/core"
+                    },
+                    {
+                      "key": "fhirVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://packages.simplifier.net/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "45c62832-bc97-40d3-9846-247e253e4843",
+    "name": "Simplifier.net FHIR Package Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API to find and retrieve all publicly published FHIR packages.\n* Serves all FHIR packages from Simplifier.net, HL7 International and other public feeds\n* For humans there is the [FHIR Registry at registry.fhir.org](https://registry.fhir.org/) for searching the full package library.\n\nFind the documentation for [other Simplifier.net APIs](https://docs.fire.ly/projects/Simplifier/api.html).\n",
+      "type": "text/plain"
+    }
+  }
+}

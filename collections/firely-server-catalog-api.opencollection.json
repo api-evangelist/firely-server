@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Simplifier.net FHIR Package Catalog API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search FHIR packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://packages.simplifier.net/catalog",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Search by (part of) a package name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Search for packages with a version containing this term"
+              },
+              {
+                "name": "canonical",
+                "value": "",
+                "type": "query",
+                "description": "Search for packages or resource contained in it with this term in their canonical"
+              },
+              {
+                "name": "pkgcanonical",
+                "value": "http://hl7.org/fhir/us/core",
+                "type": "query",
+                "description": "Search for packages with this exact canonical"
+              },
+              {
+                "name": "fhirVersion",
+                "value": "",
+                "type": "query",
+                "description": "Limit search by FHIR version"
+              },
+              {
+                "name": "prerelease",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include or exclude prerelease package versions"
+              }
+            ]
+          },
+          "docs": "Search for FHIR packages by name, canonical and other attributes.\n* Can be used for populating intellisense dropdowns for package search.\n* Does not intend to follow NPM in all aspects and adds extra FHIR specific searches, like canonicals and FHIR versions.\n\nKnown limitations:\n* Packages from which all versions are marked as `unlisted` are not returned.\n* The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
