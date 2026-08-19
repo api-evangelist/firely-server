@@ -62,7 +62,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/firely-ser
 url: https://raw.githubusercontent.com/api-evangelist/firely-server/refs/heads/main/apis.yml
 created: '2026-05-25'
 modified: '2026-05-25'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: firely-server:firely-server-fhir-rest-api
   name: Firely Server FHIR REST API
