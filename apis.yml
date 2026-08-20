@@ -86,6 +86,17 @@ apis:
   - Bulk Data
   - SMART on FHIR
   - CDS Hooks
+  - Subscription
+  tags_raw:
+  - FHIR
+  - REST
+  - Healthcare
+  - CRUD
+  - Search
+  - Terminology
+  - Bulk Data
+  - SMART on FHIR
+  - CDS Hooks
   - Subscriptions
   properties:
   - type: Documentation
