@@ -1,8 +1,7 @@
 {
   "provider": "firely-server",
   "sources": [
-    "firely-server-catalog-api-openapi.yml",
-    "firely-server-simplifier-net-fhir-package-api-api-openapi.yml"
+    "_original/simplifier-package-api-openapi.yml"
   ],
   "outputs": [
     "firely-server-catalog-api-openapi.yml",
@@ -11,6 +10,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "simplifier-package-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "simplifier-package-api-openapi.yml: tagged paths GET /catalog -> Catalog",
+    "simplifier-package-api-openapi.yml: tagged paths GET /{package-name} -> Simplifier.net FHIR Package API",
+    "simplifier-package-api-openapi.yml: tagged paths GET /{package-name}/{package-version} -> Simplifier.net FHIR Package API",
+    "simplifier-package-api-openapi.yml: declared missing tag: Catalog",
+    "simplifier-package-api-openapi.yml: declared missing tag: Simplifier.net FHIR Package API",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "firely-server-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "firely-server-simplifier-net-fhir-package-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

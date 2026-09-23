@@ -1,17 +1,15 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.1
-  title: Simplifier.net FHIR Package Catalog Simplifier.net FHIR Package API API
+  title: Simplifier.net FHIR Package API
   description: 'API to find and retrieve all publicly published FHIR packages.
 
     * Serves all FHIR packages from Simplifier.net, HL7 International and other public feeds
 
-    * For humans there is the [FHIR Registry at registry.fhir.org](https://registry.fhir.org/) for searching the full package library.
+    * For humans there is the FHIR Registry at registry.fhir.org for searching the full package library.
 
 
-    Find the documentation for [other Simplifier.net APIs](https://docs.fire.ly/projects/Simplifier/api.html).
-
-    '
+    Find the documentation for other Simplifier.net APIs.'
 servers:
 - url: https://packages.simplifier.net/
 - url: https://packages.fhir.org/
@@ -22,7 +20,7 @@ tags:
 paths:
   /{package-name}:
     get:
-      summary: List package versions.
+      summary: List package versions
       description: 'Endpoint to retrieve all versions for a package name.
 
         * The payload is compliant with the NPM package version listing.
@@ -31,9 +29,7 @@ paths:
 
         * In calculating `latest` the highest stable semver version is used, not the most recently published version.
 
-        * If an author has indicated that the package should no longer be used, the element `unlisted` will be populated for a version.
-
-        '
+        * If an author has indicated that the package should no longer be used, the element `unlisted` will be populated for a version.'
       parameters:
       - name: package-name
         in: path
@@ -53,12 +49,12 @@ paths:
           description: No packages found for the package name
       tags:
       - Simplifier.net FHIR Package API
+      operationId: getByPackageName
+      x-operation-id-source: derived
   /{package-name}/{package-version}:
     get:
       summary: Download package version
-      description: 'Download a specific package version.
-
-        '
+      description: Download a specific package version.
       parameters:
       - name: package-name
         in: path
@@ -86,46 +82,10 @@ paths:
           description: No packages found for the package name or version
       tags:
       - Simplifier.net FHIR Package API
+      operationId: getByPackageNameByPackageVersion
+      x-operation-id-source: derived
 components:
   schemas:
-    PackageVersion:
-      description: An object describing a specific version of a package
-      allOf:
-      - $ref: '#/components/schemas/Package'
-      - type: object
-        properties:
-          version:
-            type: string
-            description: Package version
-            example: 1.0.0
-          dist:
-            type: object
-            properties:
-              shasum:
-                type: string
-                example: 8dd6ac852c1d2cb4ac7312188d8d6ef7ccb65da6
-              tarball:
-                type: string
-                example: https://packages.simplifier.net/hl7.fhir.us.core/1.0.0
-          url:
-            type: string
-            description: Url for downloading this package
-            example: https://packages.simplifier.net/hl7.fhir.us.core/1.0.0
-    Package:
-      description: An object describing a package
-      properties:
-        name:
-          type: string
-          description: Package name
-          example: hl7.fhir.us.core
-        description:
-          type: string
-          description: Package description
-          example: The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.
-        fhirVersion:
-          type: string
-          description: Package FHIR version
-          example: R4
     PackageVersionsObject:
       description: An object listing package metadata and all individual versions
       properties:
@@ -153,3 +113,41 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/PackageVersion'
+    Package:
+      description: An object describing a package
+      properties:
+        name:
+          type: string
+          description: Package name
+          example: hl7.fhir.us.core
+        description:
+          type: string
+          description: Package description
+          example: The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.
+        fhirVersion:
+          type: string
+          description: Package FHIR version
+          example: R4
+    PackageVersion:
+      description: An object describing a specific version of a package
+      allOf:
+      - $ref: '#/components/schemas/Package'
+      - type: object
+        properties:
+          version:
+            type: string
+            description: Package version
+            example: 1.0.0
+          dist:
+            type: object
+            properties:
+              shasum:
+                type: string
+                example: 8dd6ac852c1d2cb4ac7312188d8d6ef7ccb65da6
+              tarball:
+                type: string
+                example: https://packages.simplifier.net/hl7.fhir.us.core/1.0.0
+          url:
+            type: string
+            description: Url for downloading this package
+            example: https://packages.simplifier.net/hl7.fhir.us.core/1.0.0

@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   version: 1.0.1
   title: Simplifier.net FHIR Package Catalog API
@@ -6,12 +6,10 @@ info:
 
     * Serves all FHIR packages from Simplifier.net, HL7 International and other public feeds
 
-    * For humans there is the [FHIR Registry at registry.fhir.org](https://registry.fhir.org/) for searching the full package library.
+    * For humans there is the FHIR Registry at registry.fhir.org for searching the full package library.
 
 
-    Find the documentation for [other Simplifier.net APIs](https://docs.fire.ly/projects/Simplifier/api.html).
-
-    '
+    Find the documentation for other Simplifier.net APIs.'
 servers:
 - url: https://packages.simplifier.net/
 - url: https://packages.fhir.org/
@@ -34,9 +32,7 @@ paths:
 
         * Packages from which all versions are marked as `unlisted` are not returned.
 
-        * The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.
-
-        '
+        * The attribute names of the return value are documented here as camelCase, but are in fact currently PascalCase.'
       parameters:
       - name: name
         description: Search by (part of) a package name
@@ -108,6 +104,8 @@ paths:
           description: No packages found for the package name
       tags:
       - Catalog
+      operationId: getCatalog
+      x-operation-id-source: derived
 components:
   schemas:
     PackageList:
