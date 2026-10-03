@@ -86,33 +86,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PackageVersionsObject:
-      description: An object listing package metadata and all individual versions
-      properties:
-        _id:
-          description: Package Id
-          type: string
-          example: hl7.fhir.us.core
-        name:
-          description: Package name
-          type: string
-          example: hl7.fhir.us.core
-        dist-tags:
-          title: Distribution tags
-          description: Tags describing specific package versions
-          type: object
-          properties:
-            latest:
-              title: latest
-              description: A pointer to the latest package version
-              type: string
-              example: 1.0.0
-        versions:
-          title: Package versions
-          description: Dictionary object of package versions
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/PackageVersion'
     PackageVersion:
       description: An object describing a specific version of a package
       allOf:
@@ -151,3 +124,30 @@ components:
           type: string
           description: Package FHIR version
           example: R4
+    PackageVersionsObject:
+      description: An object listing package metadata and all individual versions
+      properties:
+        _id:
+          description: Package Id
+          type: string
+          example: hl7.fhir.us.core
+        name:
+          description: Package name
+          type: string
+          example: hl7.fhir.us.core
+        dist-tags:
+          title: Distribution tags
+          description: Tags describing specific package versions
+          type: object
+          properties:
+            latest:
+              title: latest
+              description: A pointer to the latest package version
+              type: string
+              example: 1.0.0
+        versions:
+          title: Package versions
+          description: Dictionary object of package versions
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/PackageVersion'

@@ -108,6 +108,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    PackageList:
+      description: A list of Package objects
+      type: array
+      items:
+        $ref: '#/components/schemas/Package'
     Package:
       description: An object describing a package
       properties:
@@ -123,8 +128,3 @@ components:
           type: string
           description: Package FHIR version
           example: R4
-    PackageList:
-      description: A list of Package objects
-      type: array
-      items:
-        $ref: '#/components/schemas/Package'
