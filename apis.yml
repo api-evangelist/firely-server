@@ -18,6 +18,9 @@ description: Firely is an Amsterdam-based health IT company and one of the origi
   surface is therefore the Firely software products (Firely Server, .NET SDK, Terminal), the Simplifier.net
   package and registry APIs, and the open HL7 FHIR REST API contract that every Firely Server instance
   implements.
+x-docs-platform: readthedocs
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - FHIR
 - HL7
