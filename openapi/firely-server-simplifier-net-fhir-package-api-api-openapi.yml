@@ -86,6 +86,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Package:
+      description: An object describing a package
+      properties:
+        name:
+          type: string
+          description: Package name
+          example: hl7.fhir.us.core
+        description:
+          type: string
+          description: Package description
+          example: The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.
+        fhirVersion:
+          type: string
+          description: Package FHIR version
+          example: R4
     PackageVersion:
       description: An object describing a specific version of a package
       allOf:
@@ -109,21 +124,6 @@ components:
             type: string
             description: Url for downloading this package
             example: https://packages.simplifier.net/hl7.fhir.us.core/1.0.0
-    Package:
-      description: An object describing a package
-      properties:
-        name:
-          type: string
-          description: Package name
-          example: hl7.fhir.us.core
-        description:
-          type: string
-          description: Package description
-          example: The US Core Implementation Guide is based on FHIR Version R4 and defines the minimum conformance requirements for accessing patient data. The Argonaut pilot implementations, ONC 2015 Edition Common Clinical Data Set (CCDS), and ONC U.S. Core Data for Interoperability (USCDI) v1 provided the requirements for this guide.
-        fhirVersion:
-          type: string
-          description: Package FHIR version
-          example: R4
     PackageVersionsObject:
       description: An object listing package metadata and all individual versions
       properties:
